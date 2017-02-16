@@ -29,11 +29,12 @@ const plugins = PRODUCTION
   : [new webpack.HotModuleReplacementPlugin()];
 
 const cssIdentifier = PRODUCTION ? '[hash:base64:10]---[local]' : '[path][name]---[local]';
+
 const cssLoader = PRODUCTION
   ? ExtractTextPlugin.extract({
-    use: 'css-loader?minimize=true&localIdentName=' + cssIdentifier + '!sass-loader?includePaths[]=' + path.resolve(__dirname, './src')
+    use: `css-loader?minimize=true&localIdentName=${cssIdentifier}!sass-loader?includePaths[]=${path.resolve(__dirname, './src')}`,
   })
-  : ['style-loader', 'css-loader?localIdentName=' + cssIdentifier, 'sass-loader']
+  : ['style-loader', `css-loader?localIdentName=${cssIdentifier}`, 'sass-loader'];
 
 module.exports = {
   devtool: 'source-map',
