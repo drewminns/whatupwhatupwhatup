@@ -1,0 +1,8 @@
+exports[`Images component renders correctly renders correctly 1`] = `
+<div
+  className="images">
+  <p>
+    Hello testie McTest
+  </p>
+</div>
+`;

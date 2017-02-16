@@ -1,0 +1,14 @@
+{
+    "extends": "airbnb",
+    "globals": {
+      "window" : true
+    },
+    "env": {
+      "jest": true
+    },
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ]
+}
