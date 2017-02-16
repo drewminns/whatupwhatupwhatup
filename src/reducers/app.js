@@ -1,14 +1,17 @@
 const initialState = {
-  app: true,
+  valueState: true,
 };
 
-const app = (state = initialState, action) => {
+const main = (state = initialState, action) => {
   switch (action.type) {
     case 'UPDATE_STATE':
-      return !state.app;
+      return {
+        ...state,
+        valueState: !state.valueState,
+      };
     default:
       return state;
   }
 };
 
-export default app;
+export default main;

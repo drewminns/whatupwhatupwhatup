@@ -5,16 +5,27 @@ import { updateState } from '../../actions';
 
 class Images extends Component {
 
-  componentWillMount() {
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+
+  handleClick() {
     this.props.updateState();
   }
 
   render() {
     return (
       <div
-        className={classNames('foo', 'bar')}
+        className={ classNames('foo', 'bar') }
       >
-        Hello
+        <button onClick={ this.handleClick }>Click</button>
+        {
+          this.props.appVal
+          ? <div>True</div>
+          : <div>False</div>
+        }
       </div>
     );
   }
@@ -22,14 +33,15 @@ class Images extends Component {
 
 Images.propTypes = {
   updateState: React.PropTypes.func.isRequired,
+  appVal: React.PropTypes.bool.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
-  updateState: val => dispatch(updateState(val)),
+  updateState: () => dispatch(updateState()),
 });
 
 const mapStateToProps = state => ({
-  app: state.app,
+  appVal: state.main.valueState,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Images);
